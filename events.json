@@ -1,0 +1,56 @@
+[
+    {
+        "title": "North End Farmers Market",
+        "city": "Charlotte",
+        "zipcode": "28206",
+        "date": "Apr 18, 2024 - Oct 31, 2024",
+        "address": "1824 Statesville Ave, Charlotte, NC 28206",
+        "neighborhood": "Camp North End",
+        "website": "https://northendmarketclt.com/"
+    },
+    {
+        "title": "Friday Nights at Camp North End",
+        "city": "Charlotte",
+        "zipcode": "28206",
+        "date": "May 03, 2024 - Nov 22, 2024",
+        "address": "1824 Statesville Ave, Charlotte, NC 28206",
+        "neighborhood": "Camp North End",
+        "website": "https://camp.nc/friday-night-music/"
+    },
+    {
+        "title": "Butterfly Bungalow",
+        "city": "Belmont",
+        "zipcode": "28012",
+        "date": "May 25, 2024 - Oct 06, 2024",
+        "address": "6500 S New Hope Rd, Belmont, NC 28012",
+        "neighborhood": "Belmont",
+        "website": "https://dsbg.org/visit/butterfly-bungalow/#"
+    },
+    {
+        "title": "Lake Hickory Haunts",
+        "city": "Hickory",
+        "zipcode": "",
+        "date": "Sep 13, 2024 - Nov 02, 2024",
+        "address": "No Address",
+        "neighborhood": "Hickory",
+        "website": "https://lakehickoryhaunts.com/"
+    },
+    {
+        "title": "Oktoberfest at Carowinds",
+        "city": "Charlotte",
+        "zipcode": "28273",
+        "date": "Sep 14, 2024 - Nov 02, 2024",
+        "address": "300 Carowinds Blvd, Charlotte, NC 28273",
+        "neighborhood": "South Charlotte",
+        "website": "https://www.carowinds.com/events/oktoberfest"
+    },
+    {
+        "title": "2024 Oktoberfest at Gilde",
+        "city": "Charlotte",
+        "zipcode": "28217",
+        "date": "Sep 27, 2024 - Oct 13, 2024",
+        "address": "3530 Dewitt Ln, Charlotte, NC 28217",
+        "neighborhood": "Lower South End",
+        "website": "https://gilde1546.com/charlotte-southend-gilde-brewery-events"
+    }
+]
