@@ -17,44 +17,45 @@ from bs4 import BeautifulSoup
 import json
 import time
 
-DRIVER_PATH = "C:/Users/Jenna/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe"
-
+DRIVER_PATH = 'C:/Users/Jenna/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe'
 
 # CONFIGURE CHROME OPTIONS
 try:
     options = Options()
-    options.headless = True # Enable headless mode, In headless mode, Chrome operates in the background with no visible interface, saving valuable system resources.
+    options.headless = True  # Headless mode
     options.add_argument('--window-size=1920,1200')
-except:
-    print("Error in configuring Chromedrive options.")
+except Exception as e:
+    print(f"Error in configuring Chromedriver options: {e}")
 
-# Set up Chrome service
+# Set up Chrome driver
 try:
-    service = Service(executable_path = DRIVER_PATH)
-    driver = webdriver.Chrome(service = service, options = options)
+    service = Service(executable_path=DRIVER_PATH)
+    driver = webdriver.Chrome(service=service, options=options)
     driver.get("https://www.charlottesgotalot.com/events")
-except:
-    print("Error in setting up chrome service web driver")
+except Exception as e:
+    print(f"Error in setting up Chrome service web driver: {e}")
 
-wait = WebDriverWait(webdriver, 10)
+# Wait for page to load
+wait = WebDriverWait(driver, 10)
 
 def load_all_events_char_got_alot():
     while True:
         try:
-            # Locate the "Show More" button using its class name
-            show_more_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//button[contains(@class, "ais-infinite-hits--showmoreButton")]')))
+            # Locate the "Show More" button using its class
+            show_more_button = wait.until(
+                EC.element_to_be_clickable((By.XPATH, '//button[contains(@class, "ais-infinite-hits--showmoreButton")]'))
+            )
             
             # Scroll to the button and click it
             ActionChains(driver).move_to_element(show_more_button).perform()
             show_more_button.click()
 
-            # Pause to allow new events to load
+            # Wait to allow the new events to load
             time.sleep(3)
-        except Exception as e:
-            # When there are no more buttons or if any error occurs
-            print(f"No more 'Show More' button to click: {e}")
-            break
         
+        except Exception as e:
+            print(f"Could not locate 'Show More' button: {e}")
+            break
 
 load_all_events_char_got_alot()
 
