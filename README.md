@@ -5,3 +5,5 @@ People new to Charlotte and even current Charlotte residents want to find enjoya
 UI Prototype
 Figma: https://www.figma.com/design/KlJsBDmZ5cOgiT0pOu6Keh/Software-Capstone?node-id=0-1&node-type=canvas&t=3FAwO6KfN1wDpjVz-0 (Access is limited to members)
 
+UI Prototype Walkthrough Video Link:
+https://www.youtube.com/watch?v=IjCiZUFJDWc
