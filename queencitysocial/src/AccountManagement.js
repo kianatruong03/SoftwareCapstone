@@ -33,17 +33,21 @@ function AccountManagement() {
       {/* Calendar and Events Section */}
       <div className="events-section">
         <div className="calendar">
-          <h3>September 2024</h3>
-          {/* Simple Calendar Mockup */}
-          <table>
-            <tbody>
-              {/* Generate calendar rows here */}
-              <tr><td>Su</td><td>Mo</td><td>Tu</td><td>We</td><td>Th</td><td>Fr</td><td>Sa</td></tr>
-              {/* Map calendar data into rows */}
-              {/* You can use libraries like `react-calendar` for a full calendar */}
-            </tbody>
-          </table>
+        {/* Change code once implementing the active month and year function so it changes based on time */}
+        <h3>October 2024</h3>
+        {/* Simple Calendar Mockup */}
+            <table>
+                <iframe 
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23B39DDB&src=a2lhbmF0cnVvbmcwM0BnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043"
+                style={{ border: 'solid 1px #777' }} 
+                width="550" 
+                height="400" 
+                frameBorder="0" 
+                scrolling="no">
+                </iframe>
+            </table>
         </div>
+
 
         <div className="upcoming-events">
           <h3>Upcoming Events</h3>
