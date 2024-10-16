@@ -13,6 +13,7 @@ function AccountManagement() {
       {/* Profile Information Section */}
       <div className="profile-section">
         <h2>Profile Information</h2>
+        <hr></hr>
         <div className="profile-info">
           <div className="profile-avatar">
             <img src="profile-icon.png" alt="Profile Avatar" />
@@ -51,19 +52,21 @@ function AccountManagement() {
 
         <div className="upcoming-events">
           <h3>Upcoming Events</h3>
-          <ul>
+          <ul className="upcomining-boxes">
             <li>Dessert Festival</li>
             <li>Cupcake Center</li>
             <li>Dessert Festival</li>
+            <button type="click">More</button>
           </ul>
         </div>
 
         <div className="previous-events">
           <h3>Previous Events Attended</h3>
-          <ul>
+          <ul className="previous-boxes">
             <li>Bakery Festival</li>
             <li>Bakery Festival</li>
             <li>Bakery Festival</li>
+            <button type="click">More</button>
           </ul>
         </div>
       </div>
