@@ -1,16 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import './AccountManagement.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AccountManagement from './AccountManagement';
-
 
 function App() {
   return (
-    <div className="App">
-      <AccountManagement />
-    </div>
+    <Router>
+      <Routes>
+        {/* Redirect the root path "/" to "/account" */}
+        <Route path="/" element={<Navigate to="/account" replace />} />
+        
+        {/* The Account Management page */}
+        <Route path="/account" element={<AccountManagement />} />
+      </Routes>
+    </Router>
   );
 }
-
 
 export default App;

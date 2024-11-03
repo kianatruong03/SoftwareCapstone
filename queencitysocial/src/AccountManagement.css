@@ -59,10 +59,17 @@
     margin: 2% 20%
   }
   
+  .nav-profile-avatar img {
+    width: 75px;
+    height: 75px;
+    border-radius: 75%;
+    
+  }
+  
   .profile-avatar img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 75%;
     
   }
   
@@ -102,10 +109,13 @@
   
   .upcoming-events{
     background-color:var(--primary-color);
+    color: white;
+    text-align: center;
   }
 
   .previous-events{
     background-color:var(--previous-event-color);
+    text-align: center;
   }
 
   .previous-events li , .upcoming-events li{

@@ -8,9 +8,11 @@ const userSchema = new mongoose.Schema({
   address: String,
   state: String,
   zipCode: String,
-  googleId: String,  // Store Google ID if connected
-  upcomingEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
-  attendedEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
-}, { timestamps: true });
+  googleToken: String, // For Google Calendar API access
+  events: {
+    upcoming: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+    previous: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+  }
+});
 
 module.exports = mongoose.model('User', userSchema);

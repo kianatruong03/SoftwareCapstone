@@ -1,21 +1,22 @@
 const User = require('../models/User');
-const { getGoogleCalendarEvents } = require('../services/googleCalendarService');
 
-exports.updateProfile = async (req, res) => {
-  try {
-    const updatedUser = await User.findByIdAndUpdate(req.user.id, req.body, { new: true });
-    res.json(updatedUser);
-  } catch (error) {
-    res.status(500).json({ error: 'Error updating profile' });
-  }
-};
-
+// Get Profile
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    const calendarEvents = await getGoogleCalendarEvents(req.user.email);
-    res.json({ ...user._doc, googleCalendarEvents: calendarEvents });
+    res.json(user);
   } catch (error) {
-    res.status(500).json({ error: 'Error fetching profile data' });
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+// Update Profile
+exports.updateProfile = async (req, res) => {
+  try {
+    const updates = req.body;
+    const user = await User.findByIdAndUpdate(req.user.id, updates, { new: true });
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
   }
 };
