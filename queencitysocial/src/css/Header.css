@@ -1,0 +1,27 @@
+/* Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #c3d4c9;
+  }
+  
+  .logo {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .search-bar {
+    width: 50%;
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .profile-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  

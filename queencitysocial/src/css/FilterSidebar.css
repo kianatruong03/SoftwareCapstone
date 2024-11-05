@@ -1,0 +1,22 @@
+/* FilterSidebar.css */
+.filter-sidebar {
+    width: 25%;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .filter-group {
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-group, .date-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .date-range {
+    display: flex;
+    gap: 5px;
+  }
+  
