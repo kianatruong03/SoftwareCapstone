@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import profileIcon from './Photos/Profile-icon.png';
+import Logo from './Photos/CapstoneLogo.png';
 import './AccountManagement.css';
-
-
 
 function AccountManagement() {
   const [profile, setProfile] = useState({
@@ -84,7 +83,9 @@ function AccountManagement() {
     <div className="account-management">
       {/* Header */}
       <div className="header">
-        <div className="logo">LOGO/WEBSITE NAME</div>
+        {/* <div className="CapstoneLogo"> */}
+          <img src={Logo} alt="Profile Avatar" />
+        {/* </div> */}
          {/* Logout Button */}
          <button className="logout-button" onClick={() => {
                     // Placeholder for future logout function
