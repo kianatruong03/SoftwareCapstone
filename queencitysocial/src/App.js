@@ -37,7 +37,7 @@ import React, { useState } from 'react';
 import Login from './login';
 import Signup from './signup';
 import AccountManagement from './AccountManagement';
-import './App.css';
+// import './App.css';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is logged in

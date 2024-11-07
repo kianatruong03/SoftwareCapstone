@@ -82,30 +82,29 @@ function AccountManagement() {
   return (
     <div className="account-management">
       {/* Header */}
-      <div className="header">
+      <div className="account-header">
         {/* <div className="CapstoneLogo"> */}
           <img src={Logo} alt="Profile Avatar" />
         {/* </div> */}
          {/* Logout Button */}
-         <button className="logout-button" onClick={() => {
-                    // Placeholder for future logout function
-                    console.log("Logging out...");
-                }}>
-                    Logout
-                </button>
+         <button className="account-logout-button" onClick={() => {
+                console.log("Logging out...");
+            }}>
+              Logout
+          </button>
       </div>
 
       {/* Profile Information Section */}
-      <div className="profile-section">
+      <div className="account-profile-section">
         <h2>Profile Information</h2>
         <hr />
-        <div className="profile-info">
-        <div className="profile-avatar">
+        <div className="account-profile-info">
+        <div className="account-profile-avatar">
           <img src={profileIcon} alt="Profile Avatar" />
         </div>
           
           {/* Profile Update Form */}
-          <form className="profile-form" onSubmit={handleProfileSubmit}>
+          <form className="account-profile-form" onSubmit={handleProfileSubmit}>
             <input 
               type="text" 
               name="firstName" 
@@ -154,9 +153,9 @@ function AccountManagement() {
       </div>
 
       {/* Calendar and Events Section */}
-      <div className="events-section">
+      <div className="account-events-section">
         {/* Google Calendar */}
-        <div className="calendar">
+        <div className="account-calendar">
           <h3>Calendar</h3>
           {googleCalendarEvents.length > 0 ? (
             <ul>
@@ -172,7 +171,7 @@ function AccountManagement() {
         </div>
 
         {/* Upcoming Events */}
-        <div className="upcoming-events">
+        <div className="account-upcoming-events">
           <h3>Upcoming Events</h3>
           <ul>
             {upcomingEvents.map((event) => (
@@ -182,7 +181,7 @@ function AccountManagement() {
         </div>
 
         {/* Previous Events */}
-        <div className="previous-events">
+        <div className="account-previous-events">
           <h3>Previous Events Attended</h3>
           <ul>
             {previousEvents.map((event) => (
