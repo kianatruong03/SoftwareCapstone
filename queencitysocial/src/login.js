@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
+import './login_signup.css';
+import Logo from './Photos/CapstoneLogo.png';
 
-const Login = ({ setIsLogin }) => {
+const Login = ({ setIsLogin, onLoginSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const loginData = {
@@ -10,7 +11,7 @@ const Login = ({ setIsLogin }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:5001/auth/login', { // updated port to 5001
+      const response = await fetch('http://localhost:5001/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData),
@@ -19,7 +20,8 @@ const Login = ({ setIsLogin }) => {
 
       if (response.ok) {
         alert('Login successful');
-        console.log('Token:', data.token); // Store the token for authenticated routes
+        console.log('Token:', data.token); // You may want to store the token in local storage
+        onLoginSuccess(); // Trigger the success callback to update authentication state
       } else {
         alert(data.message);
       }
@@ -29,29 +31,31 @@ const Login = ({ setIsLogin }) => {
   };
 
   return (
-    <div className="container">
-      <div className="image-container">
-        <img src="https://raw.githubusercontent.com/kianatruong03/SoftwareCapstone/refs/heads/tariq-dev/queencitysocial/public/undraw_festivities_tvvj__1_-removebg-preview.png" alt="Login Illustration" />
-      </div>
-      <div className="form-container">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email Address:
-            <input type="email" name="email" className="input-field" required />
-          </label>
-          <label>
-            Password:
-            <input type="password" name="password" className="input-field" required />
-          </label>
-          <button type="submit" className="login-button">Go!</button>
-        </form>
-        <p>
-          Don't have an account? <a onClick={() => setIsLogin(false)}>Create Account</a>
-        </p>
-      </div>
-    </div>
-  );
+        <div className="container">
+          <div className="form-section">
+          <img className="Logo" src={Logo} alt="Profile Avatar" />
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input type="email" name="email" placeholder="Email Address" required />
+              </div>
+              <div className="form-group">
+                <input type="password" name="password" placeholder="Password" required />
+              </div>
+              <button type="submit" className="login-button">Login</button>
+            </form>
+            <div className="switch-form">
+              Don't have an account? <a onClick={() => setIsLogin(false)}>Create Account?</a>
+            </div>
+          </div>
+          <div className="illustration-section">
+            <div className="illustration">
+              <img src="https://raw.githubusercontent.com/kianatruong03/SoftwareCapstone/refs/heads/tariq-dev/queencitysocial/public/undraw_festivities_tvvj__1_-removebg-preview.png" alt="Login Illustration" />
+            </div>
+          </div>
+        </div>
+      );
 };
 
 export default Login;
+

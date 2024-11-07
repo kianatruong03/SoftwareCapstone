@@ -25,61 +25,71 @@
 
  .account-management {
     font-family: Arial, sans-serif;
-    padding: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
   }
   
-  .header {
+  .account-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
+  .CapstoneLogo {
+    height: -2rem;
   }
   
-  .search-bar {
+  .account-search-bar {
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
   }
   
-  .profile-section {
+  .account-profile-section {
     background-color: #f4f4f4;
     padding: 20px;
     margin-top: 20px;
 
   }
   
-  .profile-info {
+  .account-profile-info {
     display: flex;
     align-items: center;
     gap: 15%;
     margin: 2% 20%
   }
   
-  .profile-avatar img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  .account-nav-profile-avatar img {
+    width: 75px;
+    height: 75px;
+    border-radius: 75%;
     
   }
   
-  .profile-form {
+  .account-profile-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 75%;
+    
+  }
+  
+  .account-profile-form {
     display: grid;
     grid-template-columns: 40vh 40vh;
     gap: 15px;
     /* margin-left: 30%; */
   }
   
-  .profile-form input {
+  .account-profile-form input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  .profile-form button {
+  .account-profile-form button {
     grid-column: span 2;
     padding: 10px;
     background-color: #6E8894;
@@ -88,32 +98,35 @@
     border-radius: 5px;
   }
   
-  .events-section {
+  .account-events-section {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
   }
   
-  .calendar, .previous-events, .upcoming-events {
+  .account-calendar, .previous-events, .upcoming-events {
     background-color: #f4f4f4;
     padding: 20px;
     width: 30%;
   }
   
-  .upcoming-events{
+  .account-upcoming-events{
     background-color:var(--primary-color);
+    color: white;
+    text-align: center;
   }
 
-  .previous-events{
+  .account-previous-events{
     background-color:var(--previous-event-color);
+    text-align: center;
   }
 
-  .previous-events li , .upcoming-events li{
+  .account-previous-events li , .account-upcoming-events li{
     background-color:white;
     margin: 2% auto;
   }
 
-  .previous-events button, .upcoming-events button {
+  .account-previous-events button, .account-upcoming-events button {
     grid-column: span 2;
     padding: 10px;
     background-color: #6E8894;

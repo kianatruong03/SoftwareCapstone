@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import './login_signup.css';
+import Logo from './Photos/CapstoneLogo.png';
 
 const Signup = ({ setIsLogin }) => {
   const handleSubmit = async (e) => {
@@ -12,7 +13,7 @@ const Signup = ({ setIsLogin }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:5001/auth/signup', { // updated port to 5001
+      const response = await fetch('http://localhost:5001/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
@@ -21,7 +22,7 @@ const Signup = ({ setIsLogin }) => {
 
       if (response.ok) {
         alert('Account created successfully');
-        setIsLogin(true); // Redirect to login
+        setIsLogin(true);
       } else {
         alert(data.message);
       }
@@ -32,33 +33,32 @@ const Signup = ({ setIsLogin }) => {
 
   return (
     <div className="container">
-      <div className="image-container">
-        <img src="https://raw.githubusercontent.com/kianatruong03/SoftwareCapstone/refs/heads/tariq-dev/queencitysocial/public/undraw_Newspaper_re_syf5-removebg-preview.png" alt="Signup Illustration" />
+      <div className="illustration-section">
+        <div className="illustration">
+          <img src="https://raw.githubusercontent.com/kianatruong03/SoftwareCapstone/refs/heads/tariq-dev/queencitysocial/public/undraw_Newspaper_re_syf5-removebg-preview.png" alt="Signup Illustration" />
+        </div>
       </div>
-      <div className="form-container">
+      <div className="form-section">
+      <img className="Logo" src={Logo} alt="Profile Avatar" />
         <h2>Create Account</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            First Name:
-            <input type="text" name="firstName" className="input-field" required />
-          </label>
-          <label>
-            Last Name:
-            <input type="text" name="lastName" className="input-field" required />
-          </label>
-          <label>
-            Email Address:
-            <input type="email" name="email" className="input-field" required />
-          </label>
-          <label>
-            Password:
-            <input type="password" name="password" className="input-field" required />
-          </label>
-          <button type="submit" className="signup-button">Go!</button>
+          <div className="form-group">
+            <input type="text" name="firstName" placeholder="First Name" required />
+          </div>
+          <div className="form-group">
+            <input type="text" name="lastName" placeholder="Last Name" required />
+          </div>
+          <div className="form-group">
+            <input type="email" name="email" placeholder="Email Address" required />
+          </div>
+          <div className="form-group">
+            <input type="password" name="password" placeholder="Password" required />
+          </div>
+          <button type="submit" className="signup-button">Sign Up</button>
         </form>
-        <p>
+        <div className="switch-form">
           Already have an account? <a onClick={() => setIsLogin(true)}>Login</a>
-        </p>
+        </div>
       </div>
     </div>
   );
