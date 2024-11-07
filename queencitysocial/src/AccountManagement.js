@@ -4,8 +4,6 @@ import profileIcon from './Photos/Profile-icon.png';
 import Logo from './Photos/CapstoneLogo.png';
 import './AccountManagement.css';
 
-
-
 function AccountManagement() {
   const [profile, setProfile] = useState({
     firstName: '',
@@ -85,7 +83,9 @@ function AccountManagement() {
     <div className="account-management">
       {/* Header */}
       <div className="header">
-        <img src={Logo} alt="Profile Avatar" />
+        {/* <div className="CapstoneLogo"> */}
+          <img src={Logo} alt="Profile Avatar" />
+        {/* </div> */}
          {/* Logout Button */}
          <button className="logout-button" onClick={() => {
                     // Placeholder for future logout function
