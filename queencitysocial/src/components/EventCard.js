@@ -2,7 +2,7 @@
 import React from 'react';
 import '../css/EventCard.css';
 
-function EventCard({ title, date, finished }) {
+function EventCard({ title, date, finished, labels = [], description }) {
   return (
     <div className="event-card">
       <div className="event-image-container">
@@ -12,16 +12,16 @@ function EventCard({ title, date, finished }) {
         <h5 className="card-title">
           {title} {finished && <span className="badge bg-danger">Finished</span>}
         </h5>
+        
+        {/* Displaying Labels */}
         <p className="card-text">
-          <span className="badge event-label me-1">Food</span>
-          <span className="badge event-label me-1">Social</span>
-          {finished ? (
-            <span className="badge bg-secondary">Finished Event</span>
-          ) : (
-            <span className="badge bg-info">Weekly</span>
-          )}
+          {labels.map((label, index) => (
+            <span key={index} className="badge event-label me-1">{label}</span>
+          ))}
         </p>
-        <p className="card-text">Lorem ipsum dolor sit amet...</p>
+        
+        {/* Displaying Description */}
+        <p className="card-text">{description}</p>
       </div>
       <div className="event-actions">
         <span className="text-muted">{date}</span>
