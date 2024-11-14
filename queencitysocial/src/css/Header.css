@@ -1,0 +1,25 @@
+/* /src/css/Header.css */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #85BAA1;
+  color: whitesmoke
+}
+
+.logo {
+  flex: 1;
+  font-size: 1.5em;
+}
+
+.search-bar {
+  flex: 2;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.profile-icon {
+  flex: 1;
+  text-align: right;
+  font-size: 1.5em;
+}

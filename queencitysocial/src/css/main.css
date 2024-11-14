@@ -1,0 +1,24 @@
+/* /src/css/HomeEventFeed.css */
+.home-page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    display: flex;
+  }
+  
+  .event-list {
+    flex: 1;
+    padding: 20px;
+  }
+
+/* /src/css/AccountManagement.css */
+
+/* /src/css/EventPage.css */
+
+/* /src/css/HomePage.css */
+
+/* /src/css/LoginSignup.css */
+
+/* /src/css/SpotlightEvent.css */

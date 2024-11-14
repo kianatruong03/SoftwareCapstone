@@ -1,0 +1,84 @@
+/* Sidebar Styles */
+.filter-sidebar {
+  position: fixed;
+  top: 60px;  /* Adjust this to match the height of your header */
+  left: 0;
+  width: 250px;  /* Sidebar width */
+  height: calc(100vh - 60px);  /* Full height minus header height */
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;  /* Enable scrolling if content overflows */
+  z-index: 1;  /* Ensure sidebar stays below the header */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Align content to the top */
+}
+
+/* Sidebar content styles */
+.filter-sidebar-content {
+  flex-grow: 1;  /* Make this section grow to fill available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;  /* Allow internal scrolling if content exceeds available space */
+}
+
+/* Category filter */
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.form-check {
+  margin-bottom: 0.5rem;
+}
+
+/* Location & Distance Filters */
+.location-input,
+.distance-slider {
+  width: 100%;
+}
+
+.distance-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+}
+
+.distance-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+}
+
+/* Form control for inputs */
+.form-control {
+  margin-top: 0.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;  /* Ensure header visibility */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for header */
+  z-index: 10;  /* Ensure header stays above the sidebar */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filter-sidebar {
+    width: 200px;  /* Adjust width for smaller screens */
+  }
+}
