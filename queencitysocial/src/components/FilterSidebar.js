@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import '../css/FilterSidebar.css';
 
-function FilterSidebar() {
-  const [distance, setDistance] = useState(10); // Default distance value
-  const [location, setLocation] = useState('');
+function FilterSidebar({ onFilterChange }) {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [distance, setDistance] = useState(10);
+
+  const categories = [
+    "academic", "airport-delays", "community", "concerts", "conferences", 
+    "daylight-savings", "disasters", "expos", "festivals", "health-warnings", 
+    "observances", "performing-arts", "politics", "public-holidays", 
+    "school-holidays", "severe-weather", "sports", "terror"
+  ];
+
+  const handleCategoryChange = (category) => {
+    const newCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((cat) => cat !== category)
+      : [...selectedCategories, category];
+    setSelectedCategories(newCategories);
+    onFilterChange({ categories: newCategories, distance });
+  };
 
   const handleDistanceChange = (e) => {
     setDistance(e.target.value);
-  };
-
-  const handleLocationChange = (e) => {
-    setLocation(e.target.value);
+    onFilterChange({ categories: selectedCategories, distance: e.target.value });
   };
 
   return (
@@ -19,32 +31,23 @@ function FilterSidebar() {
 
       <div className="mb-3">
         <h4 className="fs-6">Category</h4>
-        {['Music', 'Arts', 'Sports', 'Food & Drink', 'Networking', 'Family/Kids', 'Education', 'Outdoor', 'Fitness/Wellness'].map((category, index) => (
+        {categories.map((category, index) => (
           <div className="form-check" key={index}>
             <input
               type="checkbox"
               className="form-check-input"
-              id={category.toLowerCase().replace(/ /g, '-')}/>
-            <label className="form-check-label" htmlFor={category.toLowerCase().replace(/ /g, '-')}>
-              {category}
+              id={category}
+              onChange={() => handleCategoryChange(category)}
+              checked={selectedCategories.includes(category)}
+            />
+            <label className="form-check-label" htmlFor={category}>
+              {category.replace(/-/g, ' ')}
             </label>
           </div>
         ))}
       </div>
 
       <div className="filter-sidebar-content">
-        <div className="location-filter mb-3">
-          <label htmlFor="location">Location:</label>
-          <input
-            id="location"
-            type="text"
-            className="location-input form-control"
-            value={location}
-            onChange={handleLocationChange}
-            placeholder="Enter a location"
-          />
-        </div>
-
         <div className="distance-filter mb-3">
           <label htmlFor="distance">Distance (miles):</label>
           <input
@@ -59,20 +62,6 @@ function FilterSidebar() {
           />
           <span>{distance} miles</span>
         </div>
-      </div>
-
-      <div className="mb-3">
-        <h4 className="fs-6">Date</h4>
-        {['Today', 'This Week'].map((timeframe, index) => (
-          <div className="form-check" key={index}>
-            <input type="radio" className="form-check-input" id={timeframe.toLowerCase()} name="date" />
-            <label className="form-check-label" htmlFor={timeframe.toLowerCase()}>{timeframe}</label>
-          </div>
-        ))}
-        <label className="form-label mt-2">From</label>
-        <input type="date" className="form-control" />
-        <label className="form-label mt-2">To</label>
-        <input type="date" className="form-control" />
       </div>
     </aside>
   );

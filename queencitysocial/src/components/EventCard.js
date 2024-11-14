@@ -2,7 +2,7 @@
 import React from 'react';
 import '../css/EventCard.css';
 
-function EventCard({ title, date, finished, labels = [], description }) {
+function EventCard({ title, date, finished, category, labels = [], description }) {
   return (
     <div className="event-card">
       <div className="event-image-container">
@@ -12,6 +12,13 @@ function EventCard({ title, date, finished, labels = [], description }) {
         <h5 className="card-title">
           {title} {finished && <span className="badge bg-danger">Finished</span>}
         </h5>
+        
+        {/* Displaying Category */}
+        {category && (
+          <p className="card-text">
+            <span className="badge event-label me-1">{category}</span>
+          </p>
+        )}
         
         {/* Displaying Labels */}
         <p className="card-text">
@@ -32,3 +39,4 @@ function EventCard({ title, date, finished, labels = [], description }) {
 }
 
 export default EventCard;
+
