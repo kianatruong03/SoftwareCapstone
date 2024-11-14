@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import profileIcon from './Photos/Profile-icon.png';
 import Logo from './Photos/CapstoneLogo.png';
-import './AccountManagement.css';
+import './Collective.css';
 
 function AccountManagement() {
   const [profile, setProfile] = useState({
@@ -158,7 +158,7 @@ function AccountManagement() {
         <div className="account-calendar">
           <h3>Calendar</h3>
           {googleCalendarEvents.length > 0 ? (
-            <ul>
+            <ul className="account-ul">
               {googleCalendarEvents.map((event, index) => (
                 <li key={index}>
                   {event.summary} - {new Date(event.start.dateTime).toLocaleString()}
@@ -173,19 +173,19 @@ function AccountManagement() {
         {/* Upcoming Events */}
         <div className="account-upcoming-events">
           <h3>Upcoming Events</h3>
-          <ul>
+          <ul className="account-ul">
             {upcomingEvents.map((event) => (
-              <li key={event._id}>{event.name}</li>
+              <li className="account-li" key={event._id}>{event.name}</li>
             ))}
           </ul>
         </div>
 
         {/* Previous Events */}
         <div className="account-previous-events">
-          <h3>Previous Events Attended</h3>
-          <ul>
+          <h3 className="h3-account">Previous Events Attended</h3>
+          <ul className="account-ul">
             {previousEvents.map((event) => (
-              <li key={event._id}>{event.name}</li>
+              <li className="account-li" key={event._id}>{event.name}</li>
             ))}
           </ul>
         </div>

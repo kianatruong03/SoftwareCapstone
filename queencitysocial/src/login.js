@@ -1,5 +1,5 @@
 import React from 'react';
-import './login_signup.css';
+import './Collective.css';
 import Logo from './Photos/CapstoneLogo.png';
 
 const Login = ({ setIsLogin, onLoginSuccess }) => {
@@ -31,15 +31,16 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
   };
 
   return (
-        <div className="container">
-          <div className="form-section">
+      <div className="login-signup-wrapper">
+        <div className="user-container">
+          <div className="user-form-section">
           <img className="Logo" src={Logo} alt="Profile Avatar" />
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div className="user-form-group">
                 <input type="email" name="email" placeholder="Email Address" required />
               </div>
-              <div className="form-group">
+              <div className="user-form-group">
                 <input type="password" name="password" placeholder="Password" required />
               </div>
               <button type="submit" className="login-button">Login</button>
@@ -54,6 +55,7 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
             </div>
           </div>
         </div>
+      </div>
       );
 };
 
