@@ -1,8 +1,11 @@
 import React from 'react';
-import './Collective.css';
-import Logo from './Photos/CapstoneLogo.png';
+import { useNavigate } from 'react-router-dom';
+import '../Collective.css';
+import Logo from '../Photos/CapstoneLogo.png';
 
 const Signup = ({ setIsLogin }) => {
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = {
@@ -23,11 +26,13 @@ const Signup = ({ setIsLogin }) => {
       if (response.ok) {
         alert('Account created successfully');
         setIsLogin(true);
+        navigate('/account'); // Redirect to AccountManagement page
       } else {
-        alert(data.message);
+        alert(data.message || 'Signup failed. Please try again.');
       }
     } catch (error) {
       console.error("Signup failed:", error);
+      alert("An error occurred. Please try again later.");
     }
   };
 
@@ -36,11 +41,14 @@ const Signup = ({ setIsLogin }) => {
       <div className="user-container">
         <div className="illustration-section">
           <div className="illustration">
-            <img src="https://raw.githubusercontent.com/kianatruong03/SoftwareCapstone/refs/heads/tariq-dev/queencitysocial/public/undraw_Newspaper_re_syf5-removebg-preview.png" alt="Signup Illustration" />
+            <img
+              src="https://raw.githubusercontent.com/kianatruong03/SoftwareCapstone/refs/heads/tariq-dev/queencitysocial/public/undraw_Newspaper_re_syf5-removebg-preview.png"
+              alt="Signup Illustration"
+            />
           </div>
         </div>
         <div className="user-form-section">
-        <img className="Logo" src={Logo} alt="Profile Avatar" />
+          <img className="Logo" src={Logo} alt="Profile Avatar" />
           <h2>Create Account</h2>
           <form onSubmit={handleSubmit}>
             <div className="user-form-group">
@@ -58,7 +66,13 @@ const Signup = ({ setIsLogin }) => {
             <button type="submit" className="signup-button">Sign Up</button>
           </form>
           <div className="switch-form">
-            Already have an account? <a onClick={() => setIsLogin(true)}>Login</a>
+            Already have an account?{' '}
+            <span
+              onClick={() => setIsLogin(true)}
+              style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
+            >
+              Login
+            </span>
           </div>
         </div>
       </div>

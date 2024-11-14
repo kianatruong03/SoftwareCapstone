@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import profileIcon from './Photos/Profile-icon.png';
-import Logo from './Photos/CapstoneLogo.png';
-import './Collective.css';
+import profileIcon from '../Photos/Profile-icon.png';
+import Logo from '../Photos/CapstoneLogo.png';
+import '../Collective.css';
 
 function AccountManagement() {
   const [profile, setProfile] = useState({

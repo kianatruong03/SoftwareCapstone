@@ -1,0 +1,107 @@
+/* /src/css/EventCard.css */
+
+/* Event Card Container Section */
+.event-card-section {
+  display: flex;
+  flex-direction: column;  /* Stack cards vertically */
+  align-items: center;  /* Center cards horizontally */
+  gap: 10px;  /* Space between cards */
+  padding: 20px;
+  margin-left: 250px;  /* Ensure space for the sidebar */
+  margin-top: 60px;  /* Ensure space for the header */
+  width: calc(100vw - 250px);  /* Full width minus sidebar */
+  height: calc(100vh - 60px);  /* Full height minus header */
+  overflow-y: stat;  /* Allow scrolling if needed */
+}
+
+/* Individual Event Card */
+.event-card {
+  display: flex;
+  flex-direction: row;  /* Content in a row layout */
+  background-color: #eae0f6;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;  /* Adjust the width of the card */
+  max-width: 800px;  /* Set a max-width for larger screens */
+  margin-bottom: 20px;  /* Space between cards */
+  transition: all 0.3s ease;
+  align-items: center;
+  box-sizing: border-box;  /* Include padding and borders in the element's total width and height */
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.event-image-container {
+  flex-shrink: 0;
+  margin-right: 15px;  /* Space between image and text */
+}
+
+.event-image {
+  width: 100px;  /* Adjust image size */
+  height: 100px;
+  object-fit: cover;  /* Ensures the image covers the area */
+  border-radius: 8px;
+}
+
+.event-details {
+  flex: 1;  /* Take up remaining space */
+}
+
+.event-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.event-tags {
+  margin: 10px 0;
+}
+
+.event-tags .tag {
+  display: inline-block;
+  background-color: #cce5ff;
+  border-radius: 5px;
+  padding: 3px 5px;
+  margin-right: 5px;
+}
+
+.event-actions {
+  text-align: center;
+}
+
+.event-label {
+  background-color: #85BAA1;
+  color: white; /* Set text color to white for contrast */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .event-card-section {
+    margin-left: 200px;  /* Adjust for smaller sidebar */
+    width: calc(100vw - 200px);  /* Adjust width for smaller screen */
+  }
+
+  .event-card {
+    width: 100%;  /* Full-width cards on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .event-card-section {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .event-card {
+    width: 100%;  /* Full-width cards on small screens */
+    margin-bottom: 20px;
+  }
+
+  .event-image {
+    width: 80px;  /* Smaller image size for mobile */
+    height: 80px;
+  }
+}

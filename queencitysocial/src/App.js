@@ -1,43 +1,12 @@
-// import React, { useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// import './App.css';
-// import Login from './login';   // Import Login component
-// import Signup from './signup'; // Import Signup component
-// import './AccountManagement.css';
-// import AccountManagement from './AccountManagement';
-
-// function App() {
-//   const [isLogin, setIsLogin] = useState(true); // State to choose between login and signup
-
-//   return (
-//     <>
-//       <Router>
-//         <Routes>
-//           {/* Redirect the root path "/" to "/account" */}
-//           <Route path="/" element={<Navigate to="/account" replace />} />
-          
-//           {/* The Account Management page */}
-//           <Route path="/account" element={<AccountManagement />} />
-//         </Routes>
-//       </Router>
-      
-//       <div className="App">
-//         <header className="App-header">
-//           {/* Render Login or Signup based on the state */}
-//           {isLogin ? <Login setIsLogin={setIsLogin} /> : <Signup setIsLogin={setIsLogin} />}
-//         </header>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
-
 import React, { useState } from 'react';
-import Login from './login';
-import Signup from './signup';
-import AccountManagement from './AccountManagement';
-// import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import HomeEventFeed from './pages/HomeEventFeed';
+import SpotlightEvent from './pages/SpotlightEvent';
+import AccountManagement from './pages/AccountManagement';
+import EventPage from './pages/EventPage';
+import Login from './pages/login';
+import Signup from './pages/signup';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is logged in
@@ -49,17 +18,63 @@ const App = () => {
 
   return (
     <div className="App">
-      {isAuthenticated ? (
-        // Render AccountManagement component when logged in
-        <AccountManagement />
-      ) : (
-        // Show Login or Signup based on `isLogin`
-        isLogin ? (
-          <Login setIsLogin={setIsLogin} onLoginSuccess={handleLoginSuccess} />
-        ) : (
-          <Signup setIsLogin={setIsLogin} />
-        )
-      )}
+      <Router>
+        <Routes>
+          {/* Public routes for Login and Signup */}
+          <Route
+            path="/login"
+            element={
+              isAuthenticated ? (
+                <Navigate to="/home" replace />
+              ) : (
+                isLogin ? (
+                  <Login setIsLogin={setIsLogin} onLoginSuccess={handleLoginSuccess} />
+                ) : (
+                  <Navigate to="/signup" replace />
+                )
+              )
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              isAuthenticated ? (
+                <Navigate to="/home" replace />
+              ) : (
+                isLogin ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Signup setIsLogin={setIsLogin} />
+                )
+              )
+            }
+          />
+
+          {/* Private routes: accessible only if authenticated */}
+          <Route 
+            path="/home" 
+            element={isAuthenticated ? <HomeEventFeed /> : <Navigate to="/login" replace />} 
+          />
+          <Route 
+            path="/spotlight" 
+            element={isAuthenticated ? <SpotlightEvent /> : <Navigate to="/login" replace />} 
+          />
+          <Route 
+            path="/event" 
+            element={isAuthenticated ? <EventPage /> : <Navigate to="/login" replace />} 
+          />
+          <Route 
+            path="/account" 
+            element={isAuthenticated ? <AccountManagement /> : <Navigate to="/login" replace />} 
+          />
+
+          {/* Default route */}
+          <Route 
+            path="/" 
+            element={<Navigate to={isAuthenticated ? "/home" : "/login"} replace />} 
+          />
+        </Routes>
+      </Router>
     </div>
   );
 };
