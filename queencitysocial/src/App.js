@@ -1,45 +1,31 @@
-// import React, { useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// import './App.css';
-// import Login from './login';   // Import Login component
-// import Signup from './signup'; // Import Signup component
-// import './AccountManagement.css';
-// import AccountManagement from './AccountManagement';
+import React from 'react';
 
-// function App() {
-//   const [isLogin, setIsLogin] = useState(true); // State to choose between login and signup
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//   return (
-//     <>
-//       <Router>
-//         <Routes>
-//           {/* Redirect the root path "/" to "/account" */}
-//           <Route path="/" element={<Navigate to="/account" replace />} />
+import HomeEventFeed from './pages/HomeEventFeed'
+import SpotlightEvent from './pages/SpotlightEvent'
+import AccountManagement from './pages/AccountManagement'
+import EventPage from './pages/EventPage'
+import Login from './pages/Login'
+import Signup from './pages/Signup';
+
+const App = () => { // below is what jenna had in her app.js
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes> 
+          <Route index element = {<HomeEventFeed />}/>
+          <Route path = "/home" element = {<HomeEventFeed />}/>
+          <Route path = "/spotlight" element = {<SpotlightEvent />}/>
+          <Route path = "/event" element = {<EventPage />}/> {/* Edit event pathing as it will be decided via api call to db, event#{event_id} type? */}
+          <Route path = "/login" element = {<Login />}/>
+          <Route path = "/signup" element = {<Signup />}/>
+          <Route path = "/account" element = {<AccountManagement />}/>
           
-//           {/* The Account Management page */}
-//           <Route path="/account" element={<AccountManagement />} />
-//         </Routes>
-//       </Router>
-      
-//       <div className="App">
-//         <header className="App-header">
-//           {/* Render Login or Signup based on the state */}
-//           {isLogin ? <Login setIsLogin={setIsLogin} /> : <Signup setIsLogin={setIsLogin} />}
-//         </header>
-//       </div>
-//     </>
-//   );
-// }
+        </Routes>
+    </BrowserRouter>
 
-// export default App;
-
-import React, { useState } from 'react';
-import Login from './login';
-import Signup from './signup';
-import AccountManagement from './AccountManagement';
-// import './App.css';
-
-const App = () => {
+const App = () => { // below is what kiana had in app.js
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is logged in
   const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
 
