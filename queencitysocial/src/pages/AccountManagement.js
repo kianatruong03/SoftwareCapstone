@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import profileIcon from '../Photos/Profile-icon.png';
 import Logo from '../Photos/CapstoneLogo.png';
-import '../Collective.css';
+import '../css/main.css';
 
 function AccountManagement() {
   const [profile, setProfile] = useState({
@@ -17,7 +17,6 @@ function AccountManagement() {
   const [previousEvents, setPreviousEvents] = useState([]);
   const [googleCalendarEvents, setGoogleCalendarEvents] = useState([]);
 
-  // Fetch Profile Information
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -31,7 +30,6 @@ function AccountManagement() {
     fetchProfile();
   }, []);
 
-  // Fetch Google Calendar Events
   useEffect(() => {
     const fetchCalendarEvents = async () => {
       try {
@@ -45,7 +43,6 @@ function AccountManagement() {
     fetchCalendarEvents();
   }, []);
 
-  // Fetch Upcoming Events
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -63,7 +60,6 @@ function AccountManagement() {
     fetchEvents();
   }, []);
 
-  // Handle Profile Updates
   const handleProfileChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
@@ -80,114 +76,170 @@ function AccountManagement() {
   };
 
   return (
-    <div className="account-management">
+    <div className="container-fluid">
       {/* Header */}
-      <div className="account-header">
-        {/* <div className="CapstoneLogo"> */}
-          <img src={Logo} alt="Profile Avatar" />
-        {/* </div> */}
-         {/* Logout Button */}
-         <button className="account-logout-button" onClick={() => {
-                console.log("Logging out...");
-            }}>
-              Logout
+      <div className="row py-3" style={{backgroundColor:"#85baa1"}}>
+        <div className="col-12 d-flex justify-content-between align-items-center">
+          <a href='/home'> <img src={Logo} alt="Logo" className="img-fluid" style={{ maxHeight: '80px' }} /></a>
+          <button className="btn btn-danger" onClick={() => {
+            console.log("Logging out...");
+          }}>
+            Logout
           </button>
-      </div>
-
-      {/* Profile Information Section */}
-      <div className="account-profile-section">
-        <h2>Profile Information</h2>
-        <hr />
-        <div className="account-profile-info">
-        <div className="account-profile-avatar">
-          <img src={profileIcon} alt="Profile Avatar" />
-        </div>
-          
-          {/* Profile Update Form */}
-          <form className="account-profile-form" onSubmit={handleProfileSubmit}>
-            <input 
-              type="text" 
-              name="firstName" 
-              value={profile.firstName} 
-              onChange={handleProfileChange} 
-              placeholder="First Name" 
-            />
-            <input 
-              type="text" 
-              name="lastName" 
-              value={profile.lastName} 
-              onChange={handleProfileChange} 
-              placeholder="Last Name" 
-            />
-            <input 
-              type="email" 
-              name="email" 
-              value={profile.email} 
-              onChange={handleProfileChange} 
-              placeholder="Email" 
-            />
-            <input 
-              type="text" 
-              name="address" 
-              value={profile.address} 
-              onChange={handleProfileChange} 
-              placeholder="Address" 
-            />
-            <input 
-              type="text" 
-              name="state" 
-              value={profile.state} 
-              onChange={handleProfileChange} 
-              placeholder="State" 
-            />
-            <input 
-              type="text" 
-              name="zipCode" 
-              value={profile.zipCode} 
-              onChange={handleProfileChange} 
-              placeholder="Zip Code" 
-            />
-            <button type="submit">Save</button>
-          </form>
         </div>
       </div>
 
-      {/* Calendar and Events Section */}
-      <div className="account-events-section">
-        {/* Google Calendar */}
-        <div className="account-calendar">
-          <h3>Calendar</h3>
-          {googleCalendarEvents.length > 0 ? (
-            <ul className="account-ul">
-              {googleCalendarEvents.map((event, index) => (
-                <li key={index}>
-                  {event.summary} - {new Date(event.start.dateTime).toLocaleString()}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>Please connect your Google account to view calendar events.</p>
-          )}
+      <div className="container mt-5">
+        {/* Profile Information Section */}
+        <div className="card mb-5" style={{backgroundColor:'#F2F1F1'}}>
+          <div className="card-body">
+            <h2 className="card-title mb-4" style={{padding:15}}>Profile Information</h2>
+            <hr />
+            <div className="row">
+              <div className="col-md-3 text-center mb-3">
+                <img src={profileIcon} alt="Profile Avatar" className="img-fluid rounded-circle mb-3" style={{ maxWidth: '200px' }} />
+              </div>
+              
+              <div className="col-md-9">
+                <form onSubmit={handleProfileSubmit}>
+                  <div className="row g-3">
+                    <div className="col-md-6">
+                      <input 
+                        type="text" 
+                        className="form-control"
+                        name="firstName" 
+                        value={profile.firstName} 
+                        onChange={handleProfileChange} 
+                        placeholder="First Name" 
+                        style={{
+                          borderRadius: '20px',
+                          padding: '10px 10px' }}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <input 
+                        type="text" 
+                        className="form-control"
+                        name="lastName" 
+                        value={profile.lastName} 
+                        onChange={handleProfileChange} 
+                        placeholder="Last Name" 
+                        style={{
+                          borderRadius: '20px',
+                          padding: '10px 10px' }}
+                      />
+                    </div>
+                    <div className="col-md-12">
+                      <input 
+                        type="email" 
+                        className="form-control"
+                        name="email" 
+                        value={profile.email} 
+                        onChange={handleProfileChange} 
+                        placeholder="Email" 
+                        style={{
+                          borderRadius: '20px',
+                          padding: '10px 10px' }}
+                      />
+                    </div>
+                    <div className="col-md-12">
+                      <input 
+                        type="text" 
+                        className="form-control"
+                        name="address" 
+                        value={profile.address} 
+                        onChange={handleProfileChange} 
+                        placeholder="Address" 
+                        style={{
+                          borderRadius: '20px',
+                          padding: '10px 10px' }}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <input 
+                        type="text" 
+                        className="form-control"
+                        name="state" 
+                        value={profile.state} 
+                        onChange={handleProfileChange} 
+                        placeholder="State" 
+                        style={{
+                          borderRadius: '20px',
+                          padding: '10px 10px' }}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <input 
+                        type="text" 
+                        className="form-control"
+                        name="zipCode" 
+                        value={profile.zipCode} 
+                        onChange={handleProfileChange} 
+                        placeholder="Zip Code" 
+                        style={{
+                          borderRadius: '20px',
+                          padding: '10px 10px' }}
+                      />
+                    </div>
+                    <div className="col-12">
+                      <button type="submit" className="btn btn-primary" style={{backgroundColor:'#6e8894',  borderRadius: '20px'}}>Save</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Upcoming Events */}
-        <div className="account-upcoming-events">
-          <h3>Upcoming Events</h3>
-          <ul className="account-ul">
-            {upcomingEvents.map((event) => (
-              <li className="account-li" key={event._id}>{event.name}</li>
-            ))}
-          </ul>
-        </div>
+        {/* Calendar and Events Section */}
+        <div className="row">
+          {/* Google Calendar */}
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body" style={{backgroundColor:'#ceeddb'}}>
+                <h3 className="card-title">Calendar</h3>
+                {googleCalendarEvents.length > 0 ? (
+                  <ul className="list-group list-group-flush">
+                    {googleCalendarEvents.map((event, index) => (
+                      <li key={index} className="list-group-item">
+                        {event.summary} - {new Date(event.start.dateTime).toLocaleString()}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="card-text">Please connect your Google account to view calendar events.</p>
+                )}
+              </div>
+            </div>
+          </div>
 
-        {/* Previous Events */}
-        <div className="account-previous-events">
-          <h3 className="h3-account">Previous Events Attended</h3>
-          <ul className="account-ul">
-            {previousEvents.map((event) => (
-              <li className="account-li" key={event._id}>{event.name}</li>
-            ))}
-          </ul>
+          {/* Upcoming Events */}
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body" style={{ backgroundColor: '#67597A', color:'white'}}>
+                <h3 className="card-title">Upcoming Events</h3>
+                <ul className="list-group list-group-flush">
+                  {upcomingEvents.map((event) => (
+                    <li key={event._id} className="list-group-item">{event.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Previous Events */}
+          <div className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body" style={{ backgroundColor: '#D9D9D9'}}>
+                <h3 className="card-title">Previous Events Attended</h3>
+                <ul className="list-group list-group-flush">
+                  {previousEvents.map((event) => (
+                    <li key={event._id} className="list-group-item">{event.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
