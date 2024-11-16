@@ -5,8 +5,8 @@ import HomeEventFeed from './pages/HomeEventFeed';
 import SpotlightEvent from './pages/SpotlightEvent';
 import AccountManagement from './pages/AccountManagement';
 import EventPage from './pages/EventPage';
-import Login from './pages/login';
-import Signup from './pages/signup';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is logged in

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import FilterSidebar from '../components/FilterSidebar';
 import EventCard from '../components/EventCard';
+import Logo from '../Photos/CapstoneLogo.png';
 import '../css/main.css';
 
 function HomeEventFeed() {
