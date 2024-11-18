@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../Photos/CapstoneLogo.png';
 
-const Login = ({ setIsLogin, onLoginSuccess }) => {
+const Login = ({ onLoginSuccess }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,7 +22,7 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Token:', data.token);
+        localStorage.setItem('authToken', data.token); // Store token
         onLoginSuccess();
         navigate('/account');
       } else {
@@ -38,17 +38,11 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
     <div className="container d-flex align-items-center justify-content-center min-vh-100">
       <div className="card border rounded-3 shadow-lg overflow-hidden" style={{ maxWidth: '1000px' }}>
         <div className="row g-0">
-          {/* Left side - Login Form */}
           <div className="col-md-6 p-4">
             <div className="text-center mb-5">
               <div className="d-flex align-items-center justify-content-center gap-2 mb-5">
                 <a href='/'>
-                <img 
-                  src={Logo} 
-                  alt="QueenCitySocial Logo" 
-                  className="img-fluid" 
-                  style={{ maxWidth: '70%' }}
-                />
+                  <img src={Logo} alt="QueenCitySocial Logo" className="img-fluid" style={{ maxWidth: '70%' }} />
                 </a>
               </div>
               <h2 className="mb-4">Login</h2>
@@ -62,10 +56,7 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
                   className="form-control form-control bg-light" 
                   placeholder="Email Address" 
                   required 
-                  style={{ backgroundColor: '#E8F5E9',
-                    border: 'none',
-                    borderRadius: '25px',
-                    padding: '12px 20px' }}
+                  style={{ backgroundColor: '#E8F5E9', border: 'none', borderRadius: '25px', padding: '12px 20px' }}
                 />
               </div>
               <div className="mb-5">
@@ -75,21 +66,14 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
                   className="form-control form-control bg-light" 
                   placeholder="Password" 
                   required 
-                  style={{ backgroundColor: '#E8F5E9',
-                    border: 'none',
-                    borderRadius: '25px',
-                    padding: '12px 20px'}}
+                  style={{ backgroundColor: '#E8F5E9', border: 'none', borderRadius: '25px', padding: '12px 20px' }}
                 />
               </div>
               <div className="d-grid gap-2 mb-5">
                 <button 
                   type="submit" 
                   className="btn btn-lg"
-                  style={{ 
-                    backgroundColor: '#A4B7B9',
-                    color: 'white',
-                    borderRadius: '25px'
-                  }}
+                  style={{ backgroundColor: '#A4B7B9', color: 'white', borderRadius: '25px' }}
                 >
                   Login
                 </button>
@@ -100,7 +84,7 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
               <p className="mb-0">
                 Don't have an account?{' '}
                 <span
-                  onClick={() => setIsLogin(false)}
+                  onClick={() => navigate('/signup')}
                   className="text-primary"
                   style={{ cursor: 'pointer', textDecoration: 'none' }}
                 >
@@ -109,8 +93,6 @@ const Login = ({ setIsLogin, onLoginSuccess }) => {
               </p>
             </div>
           </div>
-          
-          {/* Right side - Illustration */}
           <div className="col-md-6" style={{ backgroundColor: '#A4B7B9' }}>
             <div className="h-100 d-flex align-items-center justify-content-center p-4">
               <img

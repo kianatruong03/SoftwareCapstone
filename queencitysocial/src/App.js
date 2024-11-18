@@ -9,11 +9,17 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is logged in
-  const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem('authToken') // Check token in localStorage to persist authentication
+  );
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true); // Set authenticated to true upon successful login
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // Remove token on logout
+    setIsAuthenticated(false); // Set authenticated to false
   };
 
   return (
@@ -25,13 +31,9 @@ const App = () => {
             path="/login"
             element={
               isAuthenticated ? (
-                <Navigate to="/home" replace />
+                <Navigate to="/account" replace />
               ) : (
-                isLogin ? (
-                  <Login setIsLogin={setIsLogin} onLoginSuccess={handleLoginSuccess} />
-                ) : (
-                  <Navigate to="/signup" replace />
-                )
+                <Login key="login" onLoginSuccess={handleLoginSuccess} />
               )
             }
           />
@@ -39,39 +41,35 @@ const App = () => {
             path="/signup"
             element={
               isAuthenticated ? (
-                <Navigate to="/home" replace />
+                <Navigate to="/account" replace />
               ) : (
-                isLogin ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <Signup setIsLogin={setIsLogin} />
-                )
+                <Signup key="signup" />
               )
             }
           />
 
           {/* Private routes: accessible only if authenticated */}
-          <Route 
-            path="/home" 
-            element={isAuthenticated ? <HomeEventFeed /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/home"
+            element={isAuthenticated ? <HomeEventFeed /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/spotlight" 
-            element={isAuthenticated ? <SpotlightEvent /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/spotlight"
+            element={isAuthenticated ? <SpotlightEvent /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/event" 
-            element={isAuthenticated ? <EventPage /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/event"
+            element={isAuthenticated ? <EventPage /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/account" 
-            element={isAuthenticated ? <AccountManagement /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/account"
+            element={isAuthenticated ? <AccountManagement onLogout={handleLogout} /> : <Navigate to="/login" replace />}
           />
 
           {/* Default route */}
-          <Route 
-            path="/" 
-            element={<Navigate to={isAuthenticated ? "/home" : "/login"} replace />} 
+          <Route
+            path="/"
+            element={<Navigate to={isAuthenticated ? '/account' : '/login'} replace />}
           />
         </Routes>
       </Router>

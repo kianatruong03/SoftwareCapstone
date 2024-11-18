@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../Photos/CapstoneLogo.png';
 import '../css/main.css';
 
-const Signup = ({ setIsLogin }) => {
+const Signup = ({ onSignupSuccess }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,8 +25,8 @@ const Signup = ({ setIsLogin }) => {
 
       if (response.ok) {
         alert('Account created successfully');
-        setIsLogin(true);
-        navigate('/account');
+        onSignupSuccess();
+        navigate('/login');
       } else {
         alert(data.message || 'Signup failed. Please try again.');
       }
@@ -40,7 +40,6 @@ const Signup = ({ setIsLogin }) => {
     <div className="container d-flex align-items-center justify-content-center min-vh-100">
       <div className="card border-0 shadow-lg" style={{ borderRadius: '20px', maxWidth: '1000px' }}>
         <div className="row g-0">
-          {/* Illustration Section */}
           <div className="col-md-6" style={{ backgroundColor: '#9CB4B4', borderRadius: '20px 0 0 20px' }}>
             <div className="d-flex align-items-center justify-content-center h-100 p-4" style={{ backgroundColor:'#85baa1', borderRadius: '20px 0 0 20px'}} >
               <a href='/home'>
@@ -53,18 +52,11 @@ const Signup = ({ setIsLogin }) => {
               </a>
             </div>
           </div>
-
-          {/* Form Section */}
           <div className="col-md-6">
             <div className="card-body p-5">
               <div className="text-center mb-4">
                 <div className="d-flex justify-content-center align-items-center gap-2 mb-5">
-                  <img 
-                    src={Logo} 
-                    alt="Logo" 
-                    className="img-fluid" 
-                    style={{ maxWidth: '80%' }}
-                  />
+                  <img src={Logo} alt="Logo" className="img-fluid" style={{ maxWidth: '80%' }} />
                 </div>
                 <h2 className="mb-4">Create Account</h2>
               </div>
@@ -76,12 +68,7 @@ const Signup = ({ setIsLogin }) => {
                     name="firstName"
                     className="form-control"
                     placeholder="First Name"
-                    style={{ 
-                      backgroundColor: '#E8F5E9',
-                      border: 'none',
-                      borderRadius: '25px',
-                      padding: '12px 20px'
-                    }}
+                    style={{ backgroundColor: '#E8F5E9', border: 'none', borderRadius: '25px', padding: '12px 20px' }}
                     required
                   />
                 </div>
@@ -91,12 +78,7 @@ const Signup = ({ setIsLogin }) => {
                     name="lastName"
                     className="form-control"
                     placeholder="Last Name"
-                    style={{ 
-                      backgroundColor: '#E8F5E9',
-                      border: 'none',
-                      borderRadius: '25px',
-                      padding: '12px 20px'
-                    }}
+                    style={{ backgroundColor: '#E8F5E9', border: 'none', borderRadius: '25px', padding: '12px 20px' }}
                     required
                   />
                 </div>
@@ -106,12 +88,7 @@ const Signup = ({ setIsLogin }) => {
                     name="email"
                     className="form-control"
                     placeholder="Email Address"
-                    style={{ 
-                      backgroundColor: '#E8F5E9',
-                      border: 'none',
-                      borderRadius: '25px',
-                      padding: '12px 20px'
-                    }}
+                    style={{ backgroundColor: '#E8F5E9', border: 'none', borderRadius: '25px', padding: '12px 20px' }}
                     required
                   />
                 </div>
@@ -121,25 +98,14 @@ const Signup = ({ setIsLogin }) => {
                     name="password"
                     className="form-control"
                     placeholder="Password"
-                    style={{ 
-                      backgroundColor: '#E8F5E9',
-                      border: 'none',
-                      borderRadius: '25px',
-                      padding: '12px 20px'
-                    }}
+                    style={{ backgroundColor: '#E8F5E9', border: 'none', borderRadius: '25px', padding: '12px 20px' }}
                     required
                   />
                 </div>
                 <button
                   type="submit"
                   className="btn w-100 mb-4"
-                  style={{ 
-                    backgroundColor: '#9CB4B4',
-                    color: 'white',
-                    borderRadius: '25px',
-                    padding: '12px',
-                    border: 'none'
-                  }}
+                  style={{ backgroundColor: '#9CB4B4', color: 'white', borderRadius: '25px', padding: '12px', border: 'none' }}
                 >
                   Sign Up
                 </button>
@@ -149,12 +115,8 @@ const Signup = ({ setIsLogin }) => {
                 <p className="mb-0">
                   Already have an account?{' '}
                   <span
-                    onClick={() => setIsLogin(true)}
-                    style={{ 
-                      cursor: 'pointer', 
-                      color: '#0000EE',
-                      textDecoration: 'underline'
-                    }}
+                    onClick={() => navigate('/login')}
+                    style={{ cursor: 'pointer', color: '#0000EE', textDecoration: 'underline' }}
                   >
                     Login
                   </span>

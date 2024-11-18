@@ -78,12 +78,18 @@ function AccountManagement() {
   return (
     <div className="container-fluid">
       {/* Header */}
-      <div className="row py-3" style={{backgroundColor:"#85baa1"}}>
+      <div className="row py-3" style={{ backgroundColor: "#85baa1" }}>
         <div className="col-12 d-flex justify-content-between align-items-center">
-          <a href='/home'> <img src={Logo} alt="Logo" className="img-fluid" style={{ maxHeight: '80px' }} /></a>
-          <button className="btn btn-danger" onClick={() => {
-            console.log("Logging out...");
-          }}>
+          <a href="/home">
+            <img src={Logo} alt="Logo" className="img-fluid" style={{ maxHeight: '80px' }} />
+          </a>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              localStorage.removeItem('authToken'); // Clear token from localStorage
+              window.location.href = '/login'; // Redirect to login page
+            }}
+          >
             Logout
           </button>
         </div>
