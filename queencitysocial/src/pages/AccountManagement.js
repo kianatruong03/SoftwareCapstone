@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Calendar from './Calendar';
 import profileIcon from '../Photos/Profile-icon.png';
 import Logo from '../Photos/CapstoneLogo.png';
 import '../css/main.css';
