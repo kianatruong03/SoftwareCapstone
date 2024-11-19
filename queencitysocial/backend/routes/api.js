@@ -5,11 +5,11 @@ const calendarController = require('../controllers/calendarController');
 const eventsController = require('../controllers/eventsController');
 
 // Profile Routes
-router.get('/user/profile', userController.getProfile);
-router.put('/user/profile', userController.updateProfile);
+// router.get('/user/profile', userController.getProfile);
+// router.put('/user/profile', userController.updateProfile);
 
 // Calendar Routes
-router.get('/calendar', calendarController.getCalendarEvents);
+// router.get('/calendar', calendarController.getCalendarEvents);
 
 // Events Routes
 router.get('/events/upcoming', eventsController.getUpcomingEvents);

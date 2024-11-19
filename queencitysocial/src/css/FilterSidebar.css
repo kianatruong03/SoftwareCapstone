@@ -1,7 +1,7 @@
 /* Sidebar Styles */
 .filter-sidebar {
   position: fixed;
-  top: 60px;  /* Adjust this to match the height of your header */
+  top: 120px;  /* Adjust this to match the height of your header */
   left: 0;
   width: 250px;  /* Sidebar width */
   height: calc(100vh - 60px);  /* Full height minus header height */

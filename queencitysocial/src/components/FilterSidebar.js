@@ -26,7 +26,7 @@ function FilterSidebar({ onFilterChange }) {
   };
 
   return (
-    <aside className="filter-sidebar p-3 bg-white border-end">
+    <aside className="filter-sidebar p-6 bg-white border-end">
       <h3 className="fs-5">Filter By</h3>
 
       <div className="mb-3">
