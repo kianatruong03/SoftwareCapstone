@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from your frontend URL
+  origin: 'http://localhost:5001', // Allow requests from your frontend URL
   credentials: true,
 }));
 app.use(bodyParser.json()); // body-parser middleware

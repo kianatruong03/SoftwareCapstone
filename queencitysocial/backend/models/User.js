@@ -5,10 +5,10 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true },  // Combining definitions
   email: { type: String, required: true, unique: true }, // Combining definitions
   password: { type: String, required: true }, // Combining definitions
-  address: String,
-  state: String,
-  zipCode: String,
-  googleToken: String, // For Google Calendar API access
+  address: { type: String },
+  state: { type: String },
+  zipCode: { type: String },
+  googleToken: { type: String },
   events: {
     upcoming: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'
     }],
