@@ -27,7 +27,7 @@ function Header({ onSearchChange }) {
         />
       </div>
       <div className="ms-auto">
-      <a class="nav-link" href="/login">Login/Signup</a>
+      <a class="nav-link" href="/login" style={{color: 'black', paddingRight:10}}>Account</a>
       </div>
     </header>
   );

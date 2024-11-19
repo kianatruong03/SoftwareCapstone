@@ -7,9 +7,9 @@
   align-items: center;  /* Center cards horizontally */
   gap: 10px;  /* Space between cards */
   padding: 20px;
-  margin-left: 250px;  /* Ensure space for the sidebar */
+  margin-left: 140px;  /* Ensure space for the sidebar */
   margin-top: 60px;  /* Ensure space for the header */
-  width: calc(100vw - 250px);  /* Full width minus sidebar */
+  width: calc(60vw - 250px);  /* Full width minus sidebar */
   height: calc(100vh - 60px);  /* Full height minus header */
   overflow-y: stat;  /* Allow scrolling if needed */
 }
